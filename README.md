@@ -17,3 +17,9 @@ hist.Draw('ep')
 ```
 
 ![plot](http://www-hep.colorado.edu/~mulholland/plot1.png " ")
+
+
+# To Do List
+* Double ratio plots with uncertainties
+* Z mass fit with purity
+* Extrapolation?
