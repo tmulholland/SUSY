@@ -91,8 +91,8 @@ class Cuts(object):
                     binCuts += ROOT.TCut(self.NbjetCuts[nb])
                     binCuts += ROOT.TCut(self.kinCuts[kin])
 
-                    weight = getWeight()
-                    cuts = (self.baseCuts+binCuts)*TCut(weight)
+                    weight = self.getWeight()
+                    cuts = (self.baseCuts+binCuts)*ROOT.TCut(weight)
                     cutList.append(cuts)
 
         return cutList
