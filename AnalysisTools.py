@@ -69,7 +69,7 @@ class Cuts(object):
 
     def getWeight(self, PU=False):
 
-        weight = str(self.doLumi)+'*Weight'
+        weight = str(1000*self.doLumi)+'*Weight'
 
         return weight
 
@@ -90,7 +90,10 @@ class Cuts(object):
                     binCuts =  ROOT.TCut(self.NjetCuts[nj])
                     binCuts += ROOT.TCut(self.NbjetCuts[nb])
                     binCuts += ROOT.TCut(self.kinCuts[kin])
-                    cutList.append(self.baseCuts+binCuts)
+
+                    weight = getWeight()
+                    cuts = (self.baseCuts+binCuts)*TCut(weight)
+                    cutList.append(cuts)
 
         return cutList
                     
