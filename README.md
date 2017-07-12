@@ -15,3 +15,5 @@ hist = histObj.getHistFromList(cutList)
 hist.Draw('ep')
 
 ```
+
+![plot](http://www-hep.colorado.edu/~mulholland/plot1.png " ")
