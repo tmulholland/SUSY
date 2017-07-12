@@ -114,7 +114,7 @@ class Chain(object):
                       np.genfromtxt('files.txt', delimiter='',dtype='str')
                       if sample in f]
 
-        self.treeLoc = "/home/ww/work/data/lpcTrees/Skims/Run2ProductionV12"
+        self.treeLoc = "/nfs/data38/cms/mulholland/lpcTrees/Skims/Run2ProductionV12/"
         self.treeName = "tree"
 
     def getChain(self,):
