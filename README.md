@@ -4,10 +4,12 @@
 from AnalysisTools import *
 
 cutObj = Cuts()
-chainObj = Chain()
-histObj = Hist(chain)
-
 cutList = cutObj.getBinningCuts()
+
+chainObj = Chain()
+chain = chainObj.getChain()
+
+histObj = Hist(chain)
 hist = histObj.getHistFromList(cutList)
 
 hist.Draw('ep')
