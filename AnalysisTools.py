@@ -1,5 +1,6 @@
 import ROOT
 import numpy as np
+import re
 
 class Cuts(object):
 
@@ -133,10 +134,11 @@ class Chain(object):
 
 class Hist(object):
 
-    def __init__(self,chain):
+    def __init__(self, chain, baselineCuts=None):
 
         self.chain = chain
-        
+        self.cuts = baselineCuts
+
     def getHistFromList(self, cutList):
         
         nBins = len(cutList)
@@ -161,5 +163,24 @@ class Hist(object):
             hist.SetBinError(Bin, EventCount.GetBinError(1))
             Bin+=1
 
+
+        return hist
+
+    
+    def getDist(self, distName, distRange, nbins=100):
+        
+        plotlabel = "plot_dist_"+str(re.sub('[^a-zA-Z0-9-_*.\.]','', distName))
+    
+        hIter = 1
+        while(type(ROOT.gROOT.FindObject(plotlabel+"_"+str(hIter)))==ROOT.TH1D):
+            hIter+=1
+        
+        plotlabel+="_"+str(hIter)
+    
+        hist = ROOT.TH1D(plotlabel,plotlabel,nbins,distRange[0],distRange[1])  
+
+        assert self.cuts is not None
+
+        self.chain.Project(str(plotlabel),distName,str(self.cuts))
 
         return hist
